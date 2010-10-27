@@ -69,7 +69,7 @@ foreach item_id [array names release_status_id] {
  
 	    set status [db_string status "select im_category_from_id(:status_id)"]
 	    set old_status [db_string status "select im_category_from_id(:old_status_id)"]
-	    set item_nr [db_string item_name "select project_nr from im_projects where project_id = :item_id" -default "unknown"]
+	    set item_nr [db_string item_name "select project_name from im_projects where project_id = :item_id" -default "unknown"]
 
 	    im_release_mgmt_new_journal \
 		-object_id $release_project_id \
