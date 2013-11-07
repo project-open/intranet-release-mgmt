@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <message_catalog package_key="intranet-release-mgmt" locale="en_US" charset="ISO-8859-1">
 
+  <msg key="Release_Items">Release Items</msg>
   <msg key="Release_Mgmt">Release Mgmt</msg>
   <msg key="Release_Projects">Release Projects</msg>
 </message_catalog>
