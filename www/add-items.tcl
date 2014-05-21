@@ -183,8 +183,7 @@ db_multirow -extend { object_type_html release_project_url release_status_templa
 set bind_vars [ns_set create]
 ns_set put $bind_vars project_id $release_project_id
 set show_context_help_p 0
-set parent_menu_id [util_memoize [list db_string parent_menu "select menu_id from im_menus where label='project'" -default 0]]
-
+set parent_menu_id [im_menu_id_from_label "project"]
 set menu_label "release_items"
 set sub_navbar_html [im_sub_navbar \
     -base_url "/intranet/projects/view?project_id=$release_project_id" \
