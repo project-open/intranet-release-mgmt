@@ -171,7 +171,7 @@ db_multirow -extend { object_type_html release_project_url release_status_templa
 	id=\"project_list,$project_id\">
     "
 
-    set object_type_html [im_gif $object_type_gif $pretty_name]
+    set object_type_html [im_gif -translate_p 0 $object_type_gif $pretty_name]
 }
 
 
