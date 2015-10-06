@@ -51,17 +51,6 @@ set bulk_actions_list [list]
 lappend bulk_actions_list "Add Release Items" "add-items-2" "Add new release items"
 
 set elements {
-        object_type {
-	    label ""
-	    display_template {
-		@release_items.object_type_html;noquote@
-	    }
-	}
-	project_name {
-	    display_col project_name
-	    label "Release Item"
-	    link_url_eval $release_project_url
-	}
         project_chk {
 	    label "<input type=\"checkbox\"
 			  name=\"_dummy\"
@@ -70,6 +59,27 @@ set elements {
 	    display_template {
 		@release_items.project_chk;noquote@
 	    }
+	}
+        object_type {
+	    label ""
+	    display_template {
+		@release_items.object_type_html;noquote@
+	    }
+	}
+	parent_project_name {
+	    display_col parent_project_name
+	    label "Parent"
+	    link_url_eval $parent_project_url
+	}
+	project_nr {
+	    display_col project_nr
+	    label "Nr"
+	    link_url_eval $release_project_url
+	}
+	project_name {
+	    display_col project_name
+	    label "Release Item"
+	    link_url_eval $release_project_url
 	}
     }
 
@@ -144,8 +154,17 @@ if { ![empty_string_p $where_clause] } {
     set where_clause " and $where_clause"
 }
 
-db_multirow -extend { object_type_html release_project_url release_status_template project_chk } release_items select_release_items "
+set restrict_to_rel_project_p [parameter::get_from_package_key -package_key "intranet-release-mgmt" -parameter "RestrictReleaseItemsToReleaseProjectP" -default 0]
+set restrict_to_rel_project_sql ""
+if {$restrict_to_rel_project_p} {
+    set restrict_to_rel_project_sql "and tree_root_key(p.tree_sortkey) = (select tree_root_key(tree_sortkey) from im_projects where project_id = :release_project_id)"
+}
+
+
+db_multirow -extend { object_type_html release_project_url parent_project_url release_status_template project_chk } release_items select_release_items "
 	select	p.*,
+		p.parent_id as parent_project_id,
+		(select parent_p.project_name from im_projects parent_p where parent_p.project_id = p.parent_id) as parent_project_name,
 		o.object_type,
 		ot.pretty_name,
 		ot.object_type_gif
@@ -159,11 +178,12 @@ db_multirow -extend { object_type_html release_project_url release_status_templa
 			project_type_id in ([join [im_sub_categories -include_disabled_p 1 [im_project_type_software_release_item]] ","])
 			$project_release_item_p_sql
 		)
-		and tree_root_key(p.tree_sortkey) = (select tree_root_key(tree_sortkey) from im_projects where project_id = :release_project_id)
+		$restrict_to_rel_project_sql
 		$where_clause
 	order by project_name
 " {
     set release_project_url [export_vars -base "/intranet/projects/view?" {project_id return_url}]
+    set parent_project_url [export_vars -base "/intranet/projects/view?" {{project_id $parent_project_id} return_url}]
 
     set project_chk "<input type=\"checkbox\"
 	name=\"project_id\"
