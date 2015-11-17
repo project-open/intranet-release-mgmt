@@ -148,7 +148,7 @@ ad_proc -public im_release_mgmt_new_journal {
 } {
     Creates a new journal entry that can be passed to PL/SQL routines
 } {
-    set user_id [ad_get_user_id]
+    set user_id [ad_conn user_id]
     set peer_ip [ad_conn peeraddr]
 
     set jid [db_string new_journal "
@@ -177,7 +177,7 @@ ad_proc -public im_navbar_tree_release_mgmt { } {
     Creates an <ul> ...</ul> collapsable menu for the
     system's main NavBar.
 } {
-    set current_user_id [ad_get_user_id]
+    set current_user_id [ad_conn user_id]
 
     set release_url [export_vars -base "/intranet/projects/index" {{project_type_id [im_project_type_software_release]}}]
 
