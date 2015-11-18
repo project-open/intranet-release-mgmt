@@ -220,7 +220,7 @@ append left_navbar_html "
 		[lang::message::lookup "" intranet-release-mgmt.Filter_Release_Items "Filter Release Items"]
         </div>
 	<form action=add-items method=GET>
-	[export_form_vars return_url release_project_id]
+	[export_vars -form {return_url release_project_id}]
 	<table>
 	<tr>
 	<td>[lang::message::lookup "" intranet-release-mgmt.Release_Status "Part of Release Project?"]</td>
