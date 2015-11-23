@@ -20,7 +20,7 @@ ad_page_contract {
 # Defaults & Permissions
 # ------------------------------------------------------------
 
-set user_id [ad_maybe_redirect_for_registration]
+set user_id [auth::require_login]
 im_project_permissions $user_id $release_project_id view read write admin
 if {!$write} {
     ad_return_complaint 1 "<li>[_ intranet-core.lt_You_have_insufficient_6]"
@@ -86,10 +86,10 @@ set rel_state_pos [lsearch $top_states_list $release_status_id]
 
 switch $action {
     left {
-	set rel_state_pos [expr $rel_state_pos - 1]
+	set rel_state_pos [expr {$rel_state_pos - 1}]
     }
     right {
-	set rel_state_pos [expr $rel_state_pos + 1]
+	set rel_state_pos [expr {$rel_state_pos + 1}]
     }
     up {
 	# Search for the items with the next lower sort_order

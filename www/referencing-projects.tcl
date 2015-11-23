@@ -25,7 +25,7 @@ set return_url [im_url_with_query]
 # The managers of the individual Release Items can change 
 # _their_ release stati.
 
-set user_id [ad_maybe_redirect_for_registration]
+set user_id [auth::require_login]
 im_project_permissions $user_id $project_id view read write admin
 set edit_all_items_p $write
 

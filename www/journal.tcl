@@ -5,15 +5,15 @@
 set workflow_url [apm_package_url_from_key "acs-workflow"]
 set return_url [ns_urlencode "[ad_conn url]?[ad_conn query]"]
 
-if { ![info exists date_format] || [empty_string_p $date_format] } {
+if { ![info exists date_format] || $date_format eq "" } {
     set date_format "Mon fmDDfm, YYYY HH24:MI:SS"
 }
 
-if { ![info exists order] || [empty_string_p $order] } {
+if { ![info exists order] || $order eq "" } {
     set order latest_first
 }
 
-if { ![info exists comment_link] || [empty_string_p $comment_link] } {
+if { ![info exists comment_link] || $comment_link eq "" } {
     set comment_link 1
 }
 

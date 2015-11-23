@@ -15,7 +15,7 @@ ad_page_contract {
     return_url
 }
 
-set user_id [ad_maybe_redirect_for_registration]
+set user_id [auth::require_login]
 set page_title [lang::message::lookup "" intranet-release-mgmt.Release_Items "Release Items"]
 
 im_project_permissions $user_id $release_project_id view read write admin

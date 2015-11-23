@@ -146,13 +146,13 @@ for {set row 0} {$row < $top_scale_rows} { incr row } {
     append header "<tr class=rowtitle>\n"
     append header "<td colspan=$left_scale_size></td>\n"
 
-    for {set col 0} {$col <= [expr [llength $top_scale]-1]} { incr col } {
+    for {set col 0} {$col <= [expr {[llength $top_scale]-1}]} { incr col } {
 
 	set scale_entry [lindex $top_scale $col]
 	set scale_item [lindex $scale_entry $row]
 
 	# Check if the previous item was of the same content
-	set prev_scale_entry [lindex $top_scale [expr $col-1]]
+	set prev_scale_entry [lindex $top_scale $col-1]
 	set prev_scale_item [lindex $prev_scale_entry $row]
 
 	# Check for the "sigma" sign. We want to display the sigma
@@ -169,8 +169,8 @@ for {set row 0} {$row < $top_scale_rows} { incr row } {
 	# This is the first entry of a new content.
 	# Look forward to check if we can issue a "colspan" command
 	set colspan 1
-	set next_col [expr $col+1]
-	while {$scale_item == [lindex [lindex $top_scale $next_col] $row]} {
+	set next_col [expr {$col+1}]
+	while {$scale_item == [lindex $top_scale $next_col $row]} {
 	    incr next_col
 	    incr colspan
 	}
@@ -197,7 +197,7 @@ db_foreach query $middle_sql {
 set ctr 0
 foreach left_entry $left_scale {
 
-    set class $rowclass([expr $ctr % 2])
+    set class $rowclass([expr {$ctr % 2}])
     incr ctr
 
     # Start the row and show the left_scale values at the left

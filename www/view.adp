@@ -1,12 +1,12 @@
 <master>
-<property name="title">#calendar.Calendars#</property>
+<property name="doc(title)">#calendar.Calendars#</property>
 
 <property name="header_stuff">
   <link href="/resources/calendar/calendar.css" rel="stylesheet" type="text/css">
 </property>
 
-<table cellspacing=0 cellpadding=0 width="100%">
-<tr valign=top>
+<table cellspacing="0" cellpadding="0" width="100%">
+<tr valign="top">
 <td>
 
 	<if @view@ eq "list">
@@ -17,8 +17,8 @@
 	</else>
 	
 	<p>
-	    <a href="cal-item-new?date=@date@&view=@view@&return_url=@return_url;noquote@" title="#calendar.Add_Item#">
-	    <img border=0 align="left" valign="top" src="/resources/acs-subsite/add.gif" alt="#calendar.Add_Item#">#calendar.Add_Item#</a>
+	    <a href="cal-item-new?date=@date@&view=@view@&amp;return_url=@return_url;noquote@" title="#calendar.Add_Item#">
+	    <img border="0" align="left" valign="top" src="/resources/acs-subsite/add.gif" alt="#calendar.Add_Item#">#calendar.Add_Item#</a>
 	</p>
 	<p>@notification_chunk;noquote@</p>
 	<p>

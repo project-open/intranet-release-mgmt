@@ -16,7 +16,7 @@ ad_page_contract {
     { release_status_id "[im_release_mgmt_status_default]" }
 }
 
-set user_id [ad_maybe_redirect_for_registration]
+set user_id [auth::require_login]
 set page_title [lang::message::lookup "" intranet-release-mgmt.Release_Items "Release Items"]
 
 # -------------------------------------------------------------
@@ -65,7 +65,7 @@ foreach pid $project_id {
 			:user_id,
 			'[ad_conn peeraddr]',
 			:release_status_id,
-                        [expr $max_sort_order + 10]
+                        [expr {$max_sort_order + 10}]
 		)
 	    "
     }

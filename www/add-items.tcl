@@ -26,7 +26,7 @@ ad_page_contract {
 # The managers of the individual Release Items can change 
 # _their_ release stati.
 
-set user_id [ad_maybe_redirect_for_registration]
+set user_id [auth::require_login]
 set page_title [lang::message::lookup "" intranet-release-mgmt.Release_Items "Release Items"]
 
 im_project_permissions $user_id $release_project_id view read write admin
@@ -150,7 +150,7 @@ switch $filter_release_status_id {
 }
 
 set where_clause [join $criteria " and\n            "]
-if { ![empty_string_p $where_clause] } {
+if { $where_clause ne "" } {
     set where_clause " and $where_clause"
 }
 
