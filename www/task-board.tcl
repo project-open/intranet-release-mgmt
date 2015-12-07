@@ -49,7 +49,8 @@ set task_board_action_url "/intranet-release-mgmt/task-board-action"
 set top_states_sql "
 	select	*
 	from	im_categories c
-	where	category_type = 'Intranet Release Status'
+	where	category_type = 'Intranet Release Status' and
+		(c.enabled_p = 't' OR c.enabled_p is NULL)
 	order by category_id
 "
 set top_html ""
@@ -58,7 +59,6 @@ db_foreach top_states $top_states_sql {
     append top_html "<td class=rowtitle>$category</td>\n"
     lappend top_states_list $category_id
 }
-
 
 # ------------------------------------------------------------
 # Calculate the items to be displayed
