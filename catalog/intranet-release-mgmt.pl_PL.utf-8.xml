@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<message_catalog package_key="intranet-release-mgmt" locale="pl_PL" charset="utf-8">
+
+  <msg key="Release_Items">Elementy wydania</msg>
+  <msg key="Release_Mgmt">Zarządzanie wydaniami</msg>
+  <msg key="Release_Projects">Projekty wydań</msg>
+  <msg key="Task_Board">Tablica zadań</msg>
+</message_catalog>
