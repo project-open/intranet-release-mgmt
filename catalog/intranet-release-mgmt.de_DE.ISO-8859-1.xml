@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <message_catalog package_key="intranet-release-mgmt" locale="de_DE" charset="ISO-8859-1">
 
-  <msg key="Release_Items">Release Element</msg>
-  <msg key="Release_Mgmt">Releasemanagement</msg>
-  <msg key="Release_Projects">Release Projekte</msg>
-  <msg key="Task_Board">Task Board</msg>
+  <msg key="Release_Items">Release-Elemente</msg>
+  <msg key="Release_Mgmt">Release-Management</msg>
+  <msg key="Release_Projects">Release-Projekte</msg>
+  <msg key="Task_Board">Task-Board</msg>
 </message_catalog>
