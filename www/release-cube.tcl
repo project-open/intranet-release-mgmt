@@ -54,7 +54,7 @@ im_report_write_http_headers -output_format "html"
 
 ns_write "
 [im_header]
-[im_navbar]
+[im_navbar reporting]
 
 <table border=0 cellspacing=1 cellpadding=1>
 "
