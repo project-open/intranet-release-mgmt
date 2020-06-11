@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <message_catalog package_key="intranet-release-mgmt" locale="nl_NL" charset="ISO-8859-1">
 
+  <msg key="Release_Items">Release items</msg>
   <msg key="Release_Mgmt">Release Mgmt</msg>
   <msg key="Release_Projects">Vrijgeven projecten</msg>
+  <msg key="Task_Board">Taken bord</msg>
 </message_catalog>
