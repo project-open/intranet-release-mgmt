@@ -75,10 +75,7 @@ lappend elements {
 
 lappend elements item_chk 
 lappend elements {
-	    label "<input type=\"checkbox\"
-			  name=\"_dummy\"
-			  onclick=\"acs_ListCheckAll('item_list', this.checked)\"
-			  title=\"Check/uncheck all rows\">"
+	    label "<input id=release_item_list_check_all type=\"checkbox\" name=\"_dummy\" title=\"Check/uncheck all rows\">"
 	    display_template {
 		@release_items.item_chk;noquote@
 	    }

@@ -1,3 +1,8 @@
+<script type="text/javascript" <if @::__csp_nonce@ not nil>nonce="@::__csp_nonce;literal@"</if>>
+window.addEventListener('load', function() { 
+     document.getElementById('release_item_list_check_all').addEventListener('click', function() { acs_ListCheckAll('item_list', this.checked) });
+});
+</script>
 
 <listtemplate name="release_items"></listtemplate>
 

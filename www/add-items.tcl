@@ -52,10 +52,7 @@ lappend bulk_actions_list "Add Release Items" "add-items-2" "Add new release ite
 
 set elements {
         project_chk {
-	    label "<input type=\"checkbox\"
-			  name=\"_dummy\"
-			  onclick=\"acs_ListCheckAll('project_list', this.checked)\"
-			  title=\"Check/uncheck all rows\">"
+	    label "<input id=release_list_check_all type=checkbox name=_dummy title=\"Check/uncheck all rows\">"
 	    display_template {
 		@release_items.project_chk;noquote@
 	    }
