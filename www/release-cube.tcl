@@ -50,7 +50,7 @@ set this_url [export_vars -base "/intranet-reporting/finance-cube" {start_date e
 #
 
 # Write out HTTP header, considering CSV/MS-Excel formatting
-im_report_write_http_headers -output_format "html"
+im_report_write_http_headers -output_format "html" -report_name "release-cube"
 
 ns_write "
 [im_header]
